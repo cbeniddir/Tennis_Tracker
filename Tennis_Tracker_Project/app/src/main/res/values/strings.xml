@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Tennis_Tracker_Project</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="fr">Français</string>
+    <string name="en">Anglais</string>
+    <string name="langue">Choisir sa langue</string>
+
+    <string name="menu_home">Home</string>
+    <string name="new_matches">New Matches</string>
+    <string name="previous_matches">Previous Matches</string>
+    <string name="menu_tools">Language</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_pictures">Photos</string>
+    <string name="title_activity_new_matche">NewMatcheActivity</string>
+    <string name="title_activity_previous_matches">PreviousMatchesActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="joueur1">Nom du joueur 1</string>
+    <string name="joueur2">Nom du joueur 2</string>
+    <string name="format_match">Format du match</string>
+    <string name="format_dernier_set">Format du dernier set</string>
+    <string name="type_coup">Saisir le type de coup</string>
+    <string name="save">Save</string>
+</resources>
