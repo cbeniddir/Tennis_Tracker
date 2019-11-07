@@ -25,11 +25,11 @@ public class NewMatcheActivity extends AppCompatActivity {
     private TextInputEditText joueur2;
     private TextInputEditText formatMatche;
     private TextInputEditText formatDernierSet;
-    //private Button buttonSave;
+    private Button buttonSave;
 
     private NewMatcheAsyncTask newMatcheAsyncTask = null;
 
-    private static final String DB_URL = "jdbc:mysql://10.4.176.21:8889/Tennis_Tracker";
+    private static final String DB_URL = "jdbc:mysql://10.0.2.2:8889/Tennis_Tracker";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
@@ -44,15 +44,14 @@ public class NewMatcheActivity extends AppCompatActivity {
         joueur2 = findViewById(R.id.joueur2);
         formatMatche = findViewById(R.id.formatMatche);
         formatDernierSet = findViewById(R.id.formatSet);
-       // buttonSave = findViewById(R.id.save);
+        buttonSave = findViewById(R.id.button);
 
-
-      //  buttonSave.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-        //    public void onClick(View view) {
-         //       clickOnSave();
-         //   }
-        //});
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickOnSave();
+            }
+        });
 
     }
 
@@ -64,6 +63,7 @@ public class NewMatcheActivity extends AppCompatActivity {
         formatDernierSet.setText(formatDernierSet.getText().toString());
 
         newMatcheAsyncTask = new NewMatcheAsyncTask(NewMatcheActivity.this);
+        newMatcheAsyncTask.execute();
     };
 
     class NewMatcheAsyncTask extends AsyncTask<String, String, String> {
@@ -90,8 +90,9 @@ public class NewMatcheActivity extends AppCompatActivity {
             String msg = "";
 
             try{
+                Log.d("Entrée dans try bdd", "OK");
 
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
                 msg = "Connection done";
 
@@ -103,7 +104,7 @@ public class NewMatcheActivity extends AppCompatActivity {
                     //String query = "INSERT INTO "
                     //Statement statement = connection.createStatement();
                     //statement.execute(query);
-                    //System.out.println("The query was successfully done");
+                    System.out.println("The query was successfully done");
 
                 }
 
@@ -112,6 +113,8 @@ public class NewMatcheActivity extends AppCompatActivity {
             }catch(Exception e){
 
                 System.out.println("Exception");
+                System.out.println("Message exception " + e.getMessage());
+                System.out.println("StackTrace exception " + e.getStackTrace());
                 e.printStackTrace();
             }
 

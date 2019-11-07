@@ -57,7 +57,6 @@
                         android:hint="@string/format_match" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/save"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -65,8 +64,7 @@
                             android:id="@+id/formatSet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/format_dernier_set" />
-
+                            android:hint="Format du set" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </com.google.android.material.textfield.TextInputLayout>
