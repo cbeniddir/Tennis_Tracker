@@ -62,26 +62,26 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
 
-                    switch(menuItem.getItemId()){
+                switch(menuItem.getItemId()){
 
-                        case R.id.nav_new_matches :
-                            openNewMatchActivity();
-                            break;
+                    case R.id.nav_new_matches :
+                        openNewMatchActivity();
+                        break;
 
-                        case R.id.nav_previous_matches :
-                            openPreviousMatchActivity();
-                            break;
+                    case R.id.nav_previous_matches :
+                        openPreviousMatchActivity();
+                        break;
 
-                        case R.id.nav_settings :
-                            openSettingsActivity();
-                            break;
+                    case R.id.nav_settings :
+                        openSettingsActivity();
+                        break;
 
-                    }
-                        return false;
                 }
+                return false;
+            }
 
 
         });
@@ -142,14 +142,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             //Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
             Log.d("portrait", "orientation portrait");
-           // setContentView(R.layout.activity_main);
+            // setContentView(R.layout.activity_main);
         }
 
         setContentView(R.layout.activity_main);
     }
-
-
-
 
 
 }

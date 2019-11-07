@@ -26,4 +26,5 @@
     <string name="format_dernier_set">Format du dernier set</string>
     <string name="type_coup">Saisir le type de coup</string>
     <string name="save">Save</string>
+    <string name="title_activity_take_picture">TakePicture</string>
 </resources>
