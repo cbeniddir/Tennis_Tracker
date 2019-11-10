@@ -12,28 +12,31 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="@string/langue" />
+        app:title="@string/choose_a_language" />
 
-
-    <RadioGroup
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="-56dp"
+        android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radiobuttonFr"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonLangue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fr" />
-
-        <RadioButton
-            android:id="@+id/radiobuttonEn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/en" />
-
-
-    </RadioGroup>
+            android:layout_weight="1"
+            android:text="@string/choose_a_language" />
+    </LinearLayout>
 
 
 </RelativeLayout>

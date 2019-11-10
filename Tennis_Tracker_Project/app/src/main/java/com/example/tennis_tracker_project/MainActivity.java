@@ -2,12 +2,14 @@ package com.example.tennis_tracker_project;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,11 +31,13 @@ import android.view.Menu;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    boolean french = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //onConfigurationChanged(getResources().getConfiguration());
+        //savedInstanceState = getIntent().getExtras();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    public void switchLanguage(String languageCode) {
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(languageCode);
+        res.updateConfiguration(conf, dm);
     }
 
 

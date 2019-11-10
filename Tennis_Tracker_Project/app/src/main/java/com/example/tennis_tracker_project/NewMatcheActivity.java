@@ -18,6 +18,7 @@ import java.lang.ref.WeakReference;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.sql.*;
 
 public class NewMatcheActivity extends AppCompatActivity {
 
@@ -29,9 +30,12 @@ public class NewMatcheActivity extends AppCompatActivity {
 
     private NewMatcheAsyncTask newMatcheAsyncTask = null;
 
-    private static final String DB_URL = "jdbc:mysql://10.0.2.2:8889/Tennis_Tracker";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    String DB_URL = "jdbc:mysql://10.0.2.2:8889/Tennis_Tracker?&autoReconnect=true&failOverReadOnly=false&maxReconnects=10";
+
+    String USER = "root";
+    String PASSWORD = "root";
+    private static final String dbName = "Tennis_Tracker";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +52,11 @@ public class NewMatcheActivity extends AppCompatActivity {
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 clickOnSave();
+
             }
         });
-
     }
 
     public void clickOnSave(){
@@ -92,7 +96,7 @@ public class NewMatcheActivity extends AppCompatActivity {
             try{
                 Log.d("Entrée dans try bdd", "OK");
 
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
                 msg = "Connection done";
 
