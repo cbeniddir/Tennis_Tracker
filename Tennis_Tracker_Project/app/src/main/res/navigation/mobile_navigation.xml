@@ -7,27 +7,21 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.tennis_tracker_project.ui.home.HomeFragment"
+        android:name="com.example.tennis_tracker_project.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.tennis_tracker_project.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_new_matches"
+        android:name="com.example.tennis_tracker_project.NewMatcheFragment"
         android:label="@string/new_matches"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_new_match" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.tennis_tracker_project.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_previous_matches"
+        android:name="com.example.tennis_tracker_project.PreviousMatchFragment"
         android:label="@string/previous_matches"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.tennis_tracker_project.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_previous_match" />
 
     <fragment
         android:id="@+id/nav_share"

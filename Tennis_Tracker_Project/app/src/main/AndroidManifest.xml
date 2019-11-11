@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tennis_tracker_project">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-sdk
         android:maxSdkVersion="17" />
 
@@ -14,25 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TakePicture"
-            android:label="@string/title_activity_take_picture"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".PreviousMatchesActivity"
-            android:label="@string/title_activity_previous_matches"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".NewMatcheActivity"
-            android:label="@string/title_activity_new_matche"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="TennisTrackerProject"
+            android:name=".MainActivity" android:configChanges="screenSize|keyboardHidden"
+            android:label="Tennis Tracker"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +25,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

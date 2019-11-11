@@ -3,12 +3,10 @@
     <string name="app_name">Tennis_Tracker_Projet</string>
     <string name="navigation_drawer_open">Ouvrir navigation drawer</string>
     <string name="navigation_drawer_close">Fermer navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Votre profil</string>
+    <string name="nav_header_subtitle">Menu</string>
     <string name="nav_header_desc">En tête avigation</string>
     <string name="action_settings">Paramètres</string>
-    <string name="fr">Français</string>
-    <string name="en">Anglais</string>
 
     <string name="menu_home">Accueil</string>
     <string name="new_matches">Nouveaux Matchs</string>
@@ -28,4 +26,5 @@
     <string name="save">Sauvegarder</string>
     <string name="title_activity_take_picture">Prendre une photo</string>
     <string name="choose_a_language">Choisir une langue</string>
+    <string name="capture">Capture</string>
 </resources>

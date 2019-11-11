@@ -7,8 +7,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">En tête avigation</string>
     <string name="action_settings">Paramètres</string>
-    <string name="fr">Français</string>
-    <string name="en">Anglais</string>
 
     <string name="menu_home">Accueil</string>
     <string name="new_matches">Nouveaux Matchs</string>
@@ -28,4 +26,5 @@
     <string name="save">Sauvegarder</string>
     <string name="title_activity_take_picture">Prendre une photo</string>
     <string name="choose_a_language">Choisir une langue</string>
+    <string name="capture">Capture</string>
 </resources>
