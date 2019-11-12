@@ -9,18 +9,19 @@
 
     <!--Button to capture the picture-->
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_image_black_24dp" />
-
     <Button
         android:id="@+id/capture_image_btn"
         android:text="@string/capture"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="takePhoto"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 
 
 </LinearLayout>

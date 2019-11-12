@@ -20,7 +20,7 @@ public class TakePhotoActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     Button capture;
-    ImageView picture;
+    ImageView imageView;
     private String currentPhotoPath;
 
     @Override
@@ -28,23 +28,16 @@ public class TakePhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_picture);
 
-        picture = (ImageView) findViewById(R.id.image);
-        capture = (Button) findViewById(R.id.capture_image_btn);
-
-        capture.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                capturePicture();
-            }
-        });
-
+        imageView = (ImageView) findViewById(R.id.image);
+        //capture = (Button) findViewById(R.id.capture_image_btn);
 
     }
 
 
-    public void capturePicture(){
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    public void takePhoto(View view) {
 
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
             File photoFile = null;
@@ -61,12 +54,32 @@ public class TakePhotoActivity extends AppCompatActivity {
 
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoFile);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+
+
             }
 
+
+        }
+
+    }
+
+    private File[] listFiles() {
+        String root = getExternalFilesDir(null).toString();
+        return new File(root).listFiles();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageView.setImageBitmap(imageBitmap);
         }
     }
 
-    private File createImageFile() throws IOException{
+
+    private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -75,24 +88,17 @@ public class TakePhotoActivity extends AppCompatActivity {
         Toast.makeText(this, root, Toast.LENGTH_LONG).show();
         File storageDir = new File(root); //getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         storageDir.mkdirs();
-
-        File image = File.createTempFile(imageFileName,".jpg",storageDir);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir       /* directory */
+        );
 
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
         Toast.makeText(this, currentPhotoPath, Toast.LENGTH_LONG).show();
         return image;
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            picture.setImageBitmap(imageBitmap);
-        }
-    }
-
 
 
 

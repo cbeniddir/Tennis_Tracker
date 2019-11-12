@@ -2,6 +2,7 @@ package com.example.tennis_tracker_project;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -106,22 +107,21 @@ public class MainActivity extends AppCompatActivity {
     public void selectDrawerItem(MenuItem menuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
         switch(menuItem.getItemId()){
-            case R.id.nav_pictures :
-                openTakePictureActivity();
-                break;
 
             case R.id.nav_home :
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
                 break;
 
             case R.id.nav_new_matches :
-                //openNewMatchActivity();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new NewMatcheFragment()).commit();
                 break;
 
             case R.id.nav_previous_matches :
-                //openPreviousMatchActivity();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PreviousMatchFragment()).commit();
+                break;
+
+            case R.id.nav_pictures :
+                openTakePictureActivity();
                 break;
 
             case R.id.nav_settings :
@@ -146,7 +146,13 @@ public class MainActivity extends AppCompatActivity {
         //First, we need to create an intent, which is a messaging object used to communicate between components
         //We use it there to communicate between activities
         Intent intent = new Intent(this, TakePhotoActivity.class);
-        startActivity(intent);
+        if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
+            // make sure there's a camera
+            startActivity(intent);
+        }
+
+
+
     }
 
     //Method needed to open the activity of previous matches by clicking on buttons
