@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+  <!--  <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="650dp"
-        android:orientation="vertical">
+        android:orientation="vertical">-->
 
-        <com.google.android.material.textfield.TextInputLayout
+        <!--<com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="669dp">
 
@@ -49,27 +49,27 @@
                             android:id="@+id/formatSet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Format du set" />
+                            android:hint="Format du set" />-->
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <Button
-                                android:id="@+id/button"
+                                android:id="@+id/openActivity"
                                 android:layout_width="match_parent"
                                 android:layout_height="62dp"
-                                android:text="@string/save" />
+                                android:text="@string/add_a_new_match" />
                         </RelativeLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                 <!--   </com.google.android.material.textfield.TextInputLayout>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </RelativeLayout>

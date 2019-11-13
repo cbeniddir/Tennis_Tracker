@@ -3,8 +3,6 @@ package com.example.tennis_tracker_project;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +15,6 @@ import android.widget.Button;
 import java.lang.ref.WeakReference;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.*;
 
 public class NewMatcheActivity extends AppCompatActivity {
 
@@ -30,17 +26,16 @@ public class NewMatcheActivity extends AppCompatActivity {
 
     private NewMatcheAsyncTask newMatcheAsyncTask = null;
 
-    String DB_URL = "jdbc:mysql://10.0.2.2:8889/Tennis_Tracker?&autoReconnect=true&failOverReadOnly=false&maxReconnects=10";
-
+    String DB_URL = "jdbc:mysql://10.0.2.2:8889/Tennis_Tracker";
     String USER = "root";
     String PASSWORD = "root";
-    private static final String dbName = "Tennis_Tracker";
+    //private static final String dbName = "Tennis_Tracker";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_new_match);
+        setContentView(R.layout.activity_new_matche);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,7 +43,7 @@ public class NewMatcheActivity extends AppCompatActivity {
         joueur2 = findViewById(R.id.joueur2);
         formatMatche = findViewById(R.id.formatMatche);
         formatDernierSet = findViewById(R.id.formatSet);
-        buttonSave = findViewById(R.id.button);
+        buttonSave = findViewById(R.id.saveNewMatch);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +91,7 @@ public class NewMatcheActivity extends AppCompatActivity {
             try{
                 Log.d("Entrée dans try bdd", "OK");
 
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
                 msg = "Connection done";
 

@@ -85,7 +85,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveNewMatch"
         android:layout_width="198dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
