@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,7 +20,6 @@ import java.util.Date;
 public class TakePhotoActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    Button capture;
     ImageView imageView;
     private String currentPhotoPath;
 
@@ -29,7 +29,6 @@ public class TakePhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_take_picture);
 
         imageView = (ImageView) findViewById(R.id.image);
-        //capture = (Button) findViewById(R.id.capture_image_btn);
 
     }
 
@@ -63,10 +62,10 @@ public class TakePhotoActivity extends AppCompatActivity {
 
     }
 
-    private File[] listFiles() {
-        String root = getExternalFilesDir(null).toString();
-        return new File(root).listFiles();
-    }
+    //private File[] listFiles() {
+    //    String root = getExternalFilesDir(null).toString();
+    //    return new File(root).listFiles();
+    //}
 
 
     @Override

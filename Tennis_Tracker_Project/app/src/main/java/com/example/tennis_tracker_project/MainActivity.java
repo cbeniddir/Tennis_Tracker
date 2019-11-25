@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -42,7 +44,6 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    boolean french = false;
     private FrameLayout frameLayout;
 
 
@@ -50,26 +51,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //onConfigurationChanged(getResources().getConfiguration());
-        //savedInstanceState = getIntent().getExtras();
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_new_matches, R.id.nav_previous_matches, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-        //navigationView.setCheckedItem(R.id.nav_home);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -77,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
 
                 selectDrawerItem(menuItem);
-                drawer.closeDrawers();
-                return false;
+                return true;
             }
 
 
@@ -87,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   @Override
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         Log.d("test OK", "ok");
         super.onConfigurationChanged(newConfig);
@@ -100,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
         }
-             setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
     }
 
@@ -109,15 +101,15 @@ public class MainActivity extends AppCompatActivity {
         switch(menuItem.getItemId()){
 
             case R.id.nav_home :
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new HomeFragment()).commit();
                 break;
 
             case R.id.nav_new_matches :
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new NewMatcheFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new NewMatcheFragment()).commit();
                 break;
 
             case R.id.nav_previous_matches :
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PreviousMatchFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new PreviousMatchFragment()).commit();
                 break;
 
             case R.id.nav_pictures :
@@ -125,17 +117,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.nav_settings :
-                //openSettingsActivity();
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new SettingsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new SettingsFragment()).commit();
                 break;
 
         }
 
-        // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
-        // Set action bar title
-        setTitle(menuItem.getTitle());
-        // Close the navigation drawer
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
 
     }
 
@@ -151,18 +139,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-
-
     }
 
-    //Method needed to open the activity of previous matches by clicking on buttons
-    //public void openPreviousMatchActivity(){
-
-        //First, we need to create an intent, which is a messaging object used to communicate between components
-        //We use it there to communicate between activities
-        //Intent intent = new Intent(this, PreviousMatchesActivity.class);
-        //startActivity(intent);
-    //}
 
     public void openSettingsActivity(){
 
@@ -181,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.content_frame);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }

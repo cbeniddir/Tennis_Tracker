@@ -29,6 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
     private SettingsActivity activity;
     public boolean french = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         Button changerLangue = findViewById(R.id.buttonLangue);
 
@@ -51,12 +53,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void showLanguageDialog() {
-        Log.d("showLangueDialog", "OK");
         String[] languagesList = {"Français", "English"};
 
         AlertDialog.Builder mypopup = new AlertDialog.Builder(SettingsActivity.this);
         mypopup.setTitle("Choose language");
-
         mypopup.setSingleChoiceItems(languagesList, -1,
                 new DialogInterface.OnClickListener() {
 
@@ -66,16 +66,14 @@ public class SettingsActivity extends AppCompatActivity {
                         if (i == 0) {
                             //French
                             switchLanguage("fr");
-                            french = true;
-                            //passBooleanLanguageValue();
+                            //french = true;
                         }
                         if (i == 1) {
                             //English
                             switchLanguage("en");
-                            french = false;
+                            //french = false;
                         }
                         recreate();
-
                         dialog.dismiss();
                     }
                 });
@@ -91,15 +89,6 @@ public class SettingsActivity extends AppCompatActivity {
         conf.locale = new Locale(languageCode);
         res.updateConfiguration(conf, dm);
     }
-
-    //public void passBooleanLanguageValue(){
-    //    Intent i = new Intent(getBaseContext(), MainActivity.class);
-    //    i.putExtra("bool_french", french);
-    //    startActivity(i);
-   // }
-
-
-
 
 
 }
